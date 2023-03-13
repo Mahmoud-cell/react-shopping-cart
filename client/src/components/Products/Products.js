@@ -1,5 +1,4 @@
 import React, { useCallback, useState } from "react";
-import Modal from "react-modal";
 import "../../css/Products/Products.css";
 import ProductModal from "./ProductModal";
 

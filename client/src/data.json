@@ -8,12 +8,12 @@
         "sizes": ["S", "M"]
     },
     {
-        "id": "2",
+        "id": "id2",
         "title": "product 2", 
         "imageUrl": "/images//2.png", 
         "desc": "this is product 2", 
         "price": 300, 
-        "sizes": ["L", "M"]
+        "sizes": ["L", "XL"]
     },
     {
         "id": "id3",
@@ -21,7 +21,7 @@
         "imageUrl": "/images/3.jpg", 
         "desc": "this is product 3", 
         "price": 50, 
-        "sizes": ["S", "L"]
+        "sizes": ["S", "XXL"]
     },
     {
         "id": "id4",
@@ -29,6 +29,6 @@
         "imageUrl": "/images/4.png", 
         "desc": "this is product 4", 
         "price": 350, 
-        "sizes": ["XL", "M"]
+        "sizes": ["XL", "XS"]
     }
 ]
