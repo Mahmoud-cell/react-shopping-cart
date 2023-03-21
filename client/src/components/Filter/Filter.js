@@ -1,8 +1,12 @@
 import React from "react";
+// import { Bounce } from "react-awesome-reveal";
+
 import "../../css/Filter/Filter.css"
+
 export default function Filter(props) {
     console.log (props.size)
   return (
+    // <Bounce left>
     <div className="filter-wrapper">
       <h2 className="filter-title">Filter</h2>
       <div className="num-of-products">Number of product {props.numberOfProducts}</div>
@@ -27,5 +31,6 @@ export default function Filter(props) {
         </select>
       </div>
     </div>
+    // </Bounce>
   );
 }
