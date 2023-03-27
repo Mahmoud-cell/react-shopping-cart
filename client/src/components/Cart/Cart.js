@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../../css/Cart/Cart.css";
-import { Bounce } from "react-awesome-reveal";
+// import { Bounce } from "react-awesome-reveal";
 import CheckoutForm from "../CheckoutForm/CheckoutForm";
 
 export default function Cart(props) {
@@ -31,7 +31,7 @@ export default function Cart(props) {
           <p>There is/are {props.cartItems.length} products in cart</p>
         )}
       </div>
-      <Bounce bottom cascade>
+      {/* <Bounce bottom cascade> */}
         <div className="cart-items">
           {props.cartItems.map((item) => (
             <div className="cart-item" key={item.id}>
@@ -49,7 +49,7 @@ export default function Cart(props) {
             </div>
           ))}
         </div>
-      </Bounce>
+      {/* </Bounce> */}
       {props.cartItems.length !== 0 && (
         <div className="cart-footer">
           <div className="total">
