@@ -1,7 +1,7 @@
 import React from "react";
 import "../../css/CheckoutForm/CheckoutForm.css";
 
-import { Bounce } from "react-awesome-reveal";
+// import { Bounce } from "react-awesome-reveal";
 import Input from "../Input/Input";
 
 export default function CheckoutForm(props) {
@@ -17,7 +17,7 @@ export default function CheckoutForm(props) {
           >
             &times;
           </span>
-          <Bounce>
+          {/* <Bounce> */}
             <form onSubmit={props.submitOrder}>
               <Input
                 label="Name"
@@ -37,7 +37,7 @@ export default function CheckoutForm(props) {
                 <button type="submit"> Checkout </button>
               </div>
             </form>
-          </Bounce>
+          {/* </Bounce> */}
         </div>
       )}
     </>

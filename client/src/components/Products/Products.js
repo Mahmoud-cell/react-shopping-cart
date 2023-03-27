@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import ProductModal from "./ProductModal";
 
-import { Bounce } from "react-awesome-reveal";
+// import { Bounce } from "react-awesome-reveal";
+//there is a problem in react-reveal using
 // import Bounce from 'react-reveal/Bounce';
 import "../../css/Products/Products.css";
 
@@ -17,7 +18,7 @@ export default function Products(props) {
   };
 
   return (
-    <Bounce left cascade>
+    // <Bounce left cascade>
     <div className="products-wrapper">
       {props.products.map((product) => (
         <div className="product-item" key={product.id}>
@@ -33,6 +34,6 @@ export default function Products(props) {
       ))}
       <ProductModal product={product} closeModal={closeModal} />
     </div>
-    </Bounce>
+    /* </Bounce> */
   );
 }
