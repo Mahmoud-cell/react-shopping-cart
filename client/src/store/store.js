@@ -6,3 +6,9 @@ const initState = {};
 const enhancer = window.__REDUX_DEVTOOLS_EXTENTION_COMPOSE__ || compose
 const store = createStore(reducer, initState, enhancer(applyMiddleware(reduxThunk)))
 export default store
+
+
+//create static type 
+//crete action creator => dispatch(action)
+//create reducer
+// view 

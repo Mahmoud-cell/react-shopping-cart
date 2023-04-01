@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import ProductModal from "./ProductModal";
+import { connect } from "react-redux";
+import { fetchProducts } from "../../store/actions/products";
 
 // import { Bounce } from "react-awesome-reveal";
 //there is a problem in react-reveal using
 // import Bounce from 'react-reveal/Bounce';
 import "../../css/Products/Products.css";
+import { useEffect } from "react";
 
-export default function Products(props) {
+const Products = (props) => {
   const [product, setProduct] = useState("");
 
   const openModal = (product) => {
@@ -16,11 +19,14 @@ export default function Products(props) {
   const closeModal = () => {
     setProduct(false);
   };
+  useEffect(() => {
+    props.fetchProducts();
+  }, []);
 
   return (
     // <Bounce left cascade>
     <div className="products-wrapper">
-      {props.products.map((product) => (
+      {props.products && props.products.length ? props.products.map((product) => (
         <div className="product-item" key={product.id}>
           <a href="#" onClick={() => openModal(product)}>
             <img src={product.imageUrl} alt={product.title} />
@@ -29,11 +35,17 @@ export default function Products(props) {
             <p>{product.title}</p>
             <span>{product.price}$</span>
           </div>
-          <button onClick={()=>props.addToCart(product)}>Add To Cart</button>
+          <button onClick={() => props.addToCart(product)}>Add To Cart</button>
         </div>
-      ))}
+      )): "loading..."}
       <ProductModal product={product} closeModal={closeModal} />
     </div>
     /* </Bounce> */
   );
-}
+};
+
+export default connect((state) => {
+  return {
+    products: state.products.products,
+  };
+}, {fetchProducts})(Products);
