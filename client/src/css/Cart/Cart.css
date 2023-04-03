@@ -37,41 +37,6 @@
   font-size: 25px;
 }
 
-.checkout-form {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  padding: 30px;
-  width: 100%;
-  background: #ddd;
-}
-.checkout-form form {
-  width: 60%;
-  margin: auto;
-}
-.checkout-form form > div {
-  display: flex;
-  flex-direction: column;
-  padding: 10px;
-}
-.checkout-form form input {
-  height: 40px;
-  border: 1px solid #c0c0c0;
-  padding: 5px;
-}
-.checkout-form form button {
-  height: 40px;
-  cursor: pointer;
-}
-.checkout-form form .close-icon {
-  position: absolute;
-  right: 10px;
-  top: 10px;
-  font-size: 25px;
-  cursor: pointer;
-  font-weight: bold;
-}
-
 button {
   display: inline-block;
   border: 0;
@@ -79,4 +44,31 @@ button {
   color: #fff;
   padding: 7px;
   border-radius: 2px;
+}
+
+.order-info {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.order-info .alert-success {
+  background: green;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+}
+.order-info table {
+  border: 1px solid #c0c0c0;
+}
+.order-info table tr {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #c0c0c0;
+}
+.order-info table tr:last-of-type {
+  border-bottom: 0;
+}
+.order-info table tr td {
+  padding: 10px;
 }
