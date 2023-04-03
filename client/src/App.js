@@ -61,15 +61,15 @@ function App() {
     }
     setCartItems(cartItemsClone);
   };
-  useEffect(() => {
+  /*   useEffect(() => {
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
   }, [cartItems]);
-  const removeFromCart = (product) => {
+ */ const removeFromCart = (product) => {
     const cartItemsClone = [...cartItems];
     setCartItems(cartItemsClone.filter((p) => p.id !== product.id));
   };
   return (
-    <Provider store={store}> 
+    <Provider store={store}>
       <div className="layout">
         <Header />
         <main>
