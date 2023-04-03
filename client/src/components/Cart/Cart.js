@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import "../../css/Cart/Cart.css";
 // import { Bounce } from "react-awesome-reveal";
 import CheckoutForm from "../CheckoutForm/CheckoutForm";
+import { connect } from "react-redux";
+import { removeCart } from "../../store/actions/cart";
 
-export default function Cart(props) {
+const Cart = (props) => {
   const [showForm, setShowForm] = useState(false);
   const [value, setValue] = useState("");
   const submitOrder = (e) => {
@@ -32,23 +34,21 @@ export default function Cart(props) {
         )}
       </div>
       {/* <Bounce bottom cascade> */}
-        <div className="cart-items">
-          {props.cartItems.map((item) => (
-            <div className="cart-item" key={item.id}>
-              <img src={item.imageUrl} alt="" />
-              <div className="cart-info">
-                <div>
-                  <p>title: {item.title}</p>
-                  <p> qty: {item.qty}</p>
-                  <p>price: {item.price} $</p>
-                </div>
-                <button onClick={() => props.removeFromCart(item)}>
-                  Remove
-                </button>
+      <div className="cart-items">
+        {props.cartItems.map((item) => (
+          <div className="cart-item" key={item.id}>
+            <img src={item.imageUrl} alt="" />
+            <div className="cart-info">
+              <div>
+                <p>title: {item.title}</p>
+                <p> qty: {item.qty}</p>
+                <p>price: {item.price} $</p>
               </div>
+              <button onClick={() => props.removeCart(item)}>Remove</button>
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
+      </div>
       {/* </Bounce> */}
       {props.cartItems.length !== 0 && (
         <div className="cart-footer">
@@ -71,4 +71,10 @@ export default function Cart(props) {
       />
     </div>
   );
-}
+};
+
+export default connect((state) => {
+  return {
+    cartItems: state.cart.cartItems,
+  };
+}, {removeCart})(Cart);

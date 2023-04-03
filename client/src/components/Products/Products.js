@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ProductModal from "./ProductModal";
 import { connect } from "react-redux";
 import { fetchProducts } from "../../store/actions/products";
-
+import {addToCart} from '../../store/actions/cart';
 // import { Bounce } from "react-awesome-reveal";
 //there is a problem in react-reveal using
 // import Bounce from 'react-reveal/Bounce';
@@ -48,4 +48,4 @@ export default connect((state) => {
   return {
     products: state.products.filterProducts,
   };
-}, {fetchProducts})(Products);
+}, {fetchProducts, addToCart})(Products);
