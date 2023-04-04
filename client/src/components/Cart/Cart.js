@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import "../../css/Cart/Cart.css";
 // import { Bounce } from "react-awesome-reveal";
-import Modal from "react-modal";
 import CheckoutForm from "../CheckoutForm/CheckoutForm";
 import { connect } from "react-redux";
 import { removeCart } from "../../store/actions/cart";
+import OrderModal from "./OrderModal";
 
 const Cart = (props) => {
   const [showForm, setShowForm] = useState(false);
@@ -19,7 +19,7 @@ const Cart = (props) => {
     };
     setOrder(order);
   };
-  const closeMoal = () => {
+  const closeModal = () => {
     setOrder(false);
   };
   const handleChange = (e) => {
@@ -40,43 +40,12 @@ const Cart = (props) => {
       </div>
       {/* <Bounce bottom cascade> */}
       {/* MOADL */}
-      <Modal isOpen={order} onRequestClose={closeMoal}>
-        <div className="order-info">
-          <span className="close-icon" onClick={closeMoal}>&times;</span>
-          <p className="alert-success"> Order done successfully </p>
-          <table>
-            <tr>
-              <td> Name: </td>
-              <td> {order.name} </td>
-            </tr>
-            <tr>
-              <td> Email: </td>
-              <td> {order.email} </td>
-            </tr>
-            <tr>
-              <td> Total: </td>
-              <td>
-                {props.cartItems.reduce((a, p) => {
-                  return a + p.price;
-                }, 0)}
-              </td>
-            </tr>
-            <tr>
-              <td>Selected Items:</td>
-              <td>
-                {" "}
-                {props.cartItems.map((p) => (
-                  <div className="cart-data">
-                    <p> Number of these products is: {p.qty}</p>
-                    <p> Title of these products is: {p.title}</p>
-                  </div>
-                ))}{" "}
-              </td>
-              <td> {/* {order.email} */} </td>
-            </tr>
-          </table>
-        </div>
-      </Modal>
+
+      <OrderModal
+        order={order}
+        closeModal={closeModal}
+        cartItems={props.cartItems}
+      ></OrderModal>
       <div className="cart-items">
         {props.cartItems.map((item) => (
           <div className="cart-item" key={item.id}>
