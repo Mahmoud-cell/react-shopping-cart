@@ -1,26 +1,22 @@
 /* ******************************************************************* */
 /* without comments*/
 
-const mongoose = require("mongoose");
 const express = require("express");
+const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
-const Product = require("./models/productModel");
-const router = require("./routes/routes")
-
+const productRouter = require("./routes/routes");
+const orderRouter = require("./routes/orderRoutes");
+const runDB = require("./config/db");
 
 const app = express();
 app.use(bodyParser.json());
-app.use('/', router);
+app.use("/", productRouter);
+app.use("/", orderRouter);
 
-const connectionString = "mongodb://127.0.0.1:27017/react-shopping-cart";
-mongoose
-  .connect(connectionString, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then((test) => console.log("Connected"))
-  .catch((wrong) => console.log("failed ×_×"));
-  
+//runDB
+runDB();
+
+
 app.listen("5001", () => {
   console.log("Running on port 5001");
 });
