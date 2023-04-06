@@ -1,10 +1,11 @@
 import React from "react";
-import "../../css/CheckoutForm/CheckoutForm.css";
+import "../../css/CheckoutForm/Checkout.css";
 
 // import { Bounce } from "react-awesome-reveal";
 import Input from "../Input/Input";
+import { words } from "../../words";
 
-export default function CheckoutForm(props) {
+export default function Checkout(props) {
   return (
     <>
       {props.showForm && (
@@ -20,7 +21,7 @@ export default function CheckoutForm(props) {
           {/* <Bounce> */}
             <form onSubmit={props.submitOrder}>
               <Input
-                label="Name"
+                label={words.name }
                 type="text"
                 name="name"
                 onChange={props.handleChange}
@@ -34,7 +35,7 @@ export default function CheckoutForm(props) {
               />
 
               <div>
-                <button type="submit"> Checkout </button>
+                <button type="submit"> {words.Checkout} </button>
               </div>
             </form>
           {/* </Bounce> */}
