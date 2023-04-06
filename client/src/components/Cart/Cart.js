@@ -5,10 +5,10 @@ import CheckoutForm from "../CheckoutForm/CheckoutForm";
 import { connect } from "react-redux";
 import { removeCart } from "../../store/actions/cart";
 import OrderModal from "./OrderModal";
+import { createOrder, clearOrder } from "../../store/actions/orders";
 
 const Cart = (props) => {
   const [showForm, setShowForm] = useState(false);
-  const [order, setOrder] = useState(false);
   const [value, setValue] = useState("");
 
   const submitOrder = (e) => {
@@ -17,10 +17,11 @@ const Cart = (props) => {
       name: value.name,
       email: value.email,
     };
-    setOrder(order);
+    props.createOrder(order);
   };
   const closeModal = () => {
-    setOrder(false);
+    props.clearOrder();
+    setShowForm(false)
   };
   const handleChange = (e) => {
     setValue((prevState) => ({
@@ -42,7 +43,7 @@ const Cart = (props) => {
       {/* MOADL */}
 
       <OrderModal
-        order={order}
+        order={props.order}
         closeModal={closeModal}
         cartItems={props.cartItems}
       ></OrderModal>
@@ -88,8 +89,9 @@ const Cart = (props) => {
 export default connect(
   (state) => {
     return {
+      order: state.order.order,
       cartItems: state.cart.cartItems,
     };
   },
-  { removeCart }
+  { removeCart, createOrder, clearOrder }
 )(Cart);
