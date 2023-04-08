@@ -51,11 +51,21 @@ button {
   flex-direction: column;
   height: 100%;
 }
+.order-info .close-icon {
+  position: absolute;
+  right: 3px;
+  top: 3px;
+  cursor: pointer;
+  font-size: 40px;
+  font-weight: bold;
+}
 .order-info .alert-success {
   background: green;
   color: #fff;
   padding: 10px;
   text-align: center;
+  text-transform: capitalize;
+  margin-bottom: 20px;
 }
 .order-info table {
   border: 1px solid #c0c0c0;
