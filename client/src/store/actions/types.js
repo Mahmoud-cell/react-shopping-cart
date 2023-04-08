@@ -13,5 +13,6 @@ export const CLEAR_CART = "CLEAR_CART";
 //Orders
 export const CRETE_ORDER = "CRETE_ORDER";
 export const CLEAR_ORDER = "CLEAR_ORDER";
+export const FETCH_ORDERS = "FETCH_ORDERS";
 
 
