@@ -1,6 +1,6 @@
 /* ******************************************************************* */
 /* without comments*/
-
+require('dotenv').config();
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
@@ -8,16 +8,28 @@ const productRouter = require("./routes/routes");
 const orderRouter = require("./routes/orderRoutes");
 const runDB = require("./config/db");
 
+console.log(process.env.NODE_ENV);
+
 const app = express();
 app.use(bodyParser.json());
-app.use("/", productRouter);
-app.use("/", orderRouter);
-
 //runDB
 runDB();
 
 
-app.listen("5001", () => {
+app.use("/", productRouter);
+app.use("/", orderRouter);
+
+
+if(process.env.NODE_ENV === 'production') { // production يعني انا خلاص على هيروكو
+  app.use('/', express.static('public'));
+
+  app.get('/', (req, res) => res.sendFile(__dirname + '/public/index.html'));  //__dirname => server.js
+} else {
+  app.get('/', (req, res)=> res.send('API Running'));
+}
+
+const PORT = process.env.PORT;
+app.listen(PORT || "5001", () => {
   console.log("Running on port 5001");
 });
 
